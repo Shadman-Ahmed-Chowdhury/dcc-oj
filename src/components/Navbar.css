@@ -1,0 +1,16 @@
+a {
+	color: white;
+	text-decoration: none;
+	font-size: 18px;
+	transition: 0.5s ease-in-out;
+}
+a:hover {
+	color: #aaa;
+}
+.navbar-brand {
+	font-size: 22px;
+}
+
+.link {
+	padding-left: 30px;
+}
