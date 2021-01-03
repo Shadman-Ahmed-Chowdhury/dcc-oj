@@ -3,8 +3,6 @@ import { BounceLoader } from 'react-spinners';
 
 import './ProblemDetails.css';
 
-import Navbar from './Navbar';
-
 import getProblemDetails from '../app-logic/getProblemDetails';
 
 class ProblemDetails extends React.Component {
@@ -49,11 +47,15 @@ class ProblemDetails extends React.Component {
 		});
 	}
 
+	submitBtn = () => {
+		const id = this.props.match.params.id;
+		this.props.history.push(`/submit/${id}`);
+	};
+
 	render() {
 		if (this.state.loading) {
 			return (
 				<div className="ProblemDetails">
-					<Navbar />
 					<div className="loader">
 						<BounceLoader size={100} />
 					</div>
@@ -62,7 +64,6 @@ class ProblemDetails extends React.Component {
 		}
 		return (
 			<div>
-				<Navbar />
 				<div className="container">
 					<div className="row">
 						<div className="col-md-9 mt-3">
@@ -83,24 +84,27 @@ class ProblemDetails extends React.Component {
 							<h6>Sample Output</h6>
 							<p className="content">{this.state.sampleOutput}</p>
 
-							<button className="btn btn-sm btn-outline-dark">
+							<button
+								className="btn btn-sm btn-outline-dark"
+								onClick={this.submitBtn}
+							>
 								Submit Solution
 							</button>
 						</div>
 						<div className="col-md-3 mt-5 list">
-							<ul class="list-group">
-								<li class="list-group-item">
+							<ul className="list-group">
+								<li className="list-group-item">
 									Setter: {this.state.problemSetter}
 								</li>
-								<li class="list-group-item ">
+								<li className="list-group-item ">
 									Difficulty: {this.state.difficulty}
 								</li>
-								<li class="list-group-item ">Time Limit: 2s</li>
-								<li class="list-group-item ">Memory Limit: 256MB</li>
-								<li class="list-group-item ">
+								<li className="list-group-item ">Time Limit: 2s</li>
+								<li className="list-group-item ">Memory Limit: 256MB</li>
+								<li className="list-group-item ">
 									Tags:
 									{this.state.tags.map((tag) => {
-										return <div>{tag}</div>;
+										return <div key={tag}>{tag}</div>;
 									})}
 								</li>
 							</ul>

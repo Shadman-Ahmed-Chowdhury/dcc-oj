@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BounceLoader } from 'react-spinners';
 
-import Navbar from './Navbar';
-
 import getProblems from '../app-logic/getProblems';
 
 import './ProblemList.css';
@@ -26,7 +24,6 @@ const ProblemList = () => {
 	if (loading) {
 		return (
 			<div className="ProblemList">
-				<Navbar />
 				<div className="loader">
 					<BounceLoader size={100} />
 				</div>
@@ -35,7 +32,6 @@ const ProblemList = () => {
 	} else {
 		return (
 			<div className="ProblemList">
-				<Navbar />
 				<div className="container">
 					<h2>All Problems</h2>
 					<Link to="/problems/new">

@@ -10,12 +10,15 @@ import Login from './components/Login';
 import ProblemList from './components/ProblemList';
 import AddProblem from './components/AddProblem';
 import ProblemDetails from './components/ProblemDetails';
+import SubmitProblem from './components/SubmitProblem';
 import SubmissionList from './components/SubmissionList';
+import Navbar from './components/Navbar';
 
 function App() {
 	return (
 		<div>
 			<Router>
+				<Navbar />
 				<div>
 					<Route path="/" exact component={Home} />
 					<Route path="/login" exact component={Login} />
@@ -26,6 +29,7 @@ function App() {
 						component={ProblemDetails}
 					/>
 					<Route path="/problems/new" exact component={AddProblem} />
+					<Route path="/submit/:id" exact component={SubmitProblem} />
 					<Route path="/submissions" exact component={SubmissionList} />
 				</div>
 			</Router>
