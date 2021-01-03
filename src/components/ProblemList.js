@@ -22,15 +22,7 @@ const ProblemList = () => {
 		};
 		fetchProblems();
 	}, []);
-	/* return (
-		<div className="ProblemList">
-			<Navbar />
-			<div className="container">
-				<h2 className="text-center mt-3">List of all problems</h2>
-			</div>
-		</div>
-	); */
-	//Show loader while fetching data from firestore
+
 	if (loading) {
 		return (
 			<div className="ProblemList">
@@ -52,7 +44,7 @@ const ProblemList = () => {
 						</button>
 					</Link>
 
-					<table class="table">
+					<table className="table">
 						<thead>
 							<tr>
 								<th scope="col">#</th>
