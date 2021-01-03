@@ -8,6 +8,8 @@ import './App.css';
 import Home from './components/Home';
 import Login from './components/Login';
 import ProblemList from './components/ProblemList';
+import AddProblem from './components/AddProblem';
+import ProblemDetails from './components/ProblemDetails';
 import SubmissionList from './components/SubmissionList';
 
 function App() {
@@ -18,6 +20,12 @@ function App() {
 					<Route path="/" exact component={Home} />
 					<Route path="/login" exact component={Login} />
 					<Route path="/problems" exact component={ProblemList} />
+					<Route
+						path="/problems/details/:id"
+						exact
+						component={ProblemDetails}
+					/>
+					<Route path="/problems/new" exact component={AddProblem} />
 					<Route path="/submissions" exact component={SubmissionList} />
 				</div>
 			</Router>
