@@ -1,0 +1,25 @@
+.content {
+  padding: 10px;
+  background-color: #ededed;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 2px;
+}
+.submit-btn {
+  margin-top: 20px;
+  float: right;
+}
+.theme-btn {
+  float: right;
+}
+.dropdown-item {
+  font-size: 0.7em;
+}
+.dropdown-menu {
+  height: 300px;
+  overflow-y: scroll;
+}
