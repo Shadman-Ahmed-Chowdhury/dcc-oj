@@ -71,9 +71,9 @@ class AddProblem extends React.Component {
 
 	addProblem = (e) => {
 		e.preventDefault();
-
-		const title = this.state.
-	}
+		console.log(process.env.REACT_APP_JUDGE_API_KEY);
+		console.log('Submit Button Clicked');
+	};
 	render() {
 		return (
 			<div>
