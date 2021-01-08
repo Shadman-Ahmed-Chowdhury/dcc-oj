@@ -1,5 +1,6 @@
 import React from 'react';
 import { BounceLoader } from 'react-spinners';
+import DOMPurify from 'dompurify';
 
 import './ProblemDetails.css';
 
@@ -35,6 +36,7 @@ class ProblemDetails extends React.Component {
 				description: doc.data().description,
 				difficulty: doc.data().difficulty,
 				input: doc.data().input,
+				constraints: doc.data().constraints,
 				output: doc.data().output,
 				sampleInput: doc.data().sampleInput,
 				sampleOutput: doc.data().sampleOutput,
@@ -50,6 +52,11 @@ class ProblemDetails extends React.Component {
 	submitBtn = () => {
 		const id = this.props.match.params.id;
 		this.props.history.push(`/submit/${id}`);
+	};
+	createMarkup = (html) => {
+		return {
+			__html: DOMPurify.sanitize(html),
+		};
 	};
 
 	render() {
@@ -70,19 +77,48 @@ class ProblemDetails extends React.Component {
 							<h3>{this.state.title}</h3>
 
 							<h6>Description</h6>
-							<p className="content">{this.state.description}</p>
+							<p
+								className="content"
+								dangerouslySetInnerHTML={this.createMarkup(
+									this.state.description
+								)}
+							></p>
 
 							<h6>Input</h6>
-							<p className="content">{this.state.input}</p>
+							<p
+								className="content"
+								dangerouslySetInnerHTML={this.createMarkup(this.state.input)}
+							></p>
+
+							<h6>Constraints</h6>
+							<p
+								className="content"
+								dangerouslySetInnerHTML={this.createMarkup(
+									this.state.constraints
+								)}
+							></p>
 
 							<h6>Output</h6>
-							<p className="content">{this.state.output}</p>
+							<p
+								className="content"
+								dangerouslySetInnerHTML={this.createMarkup(this.state.output)}
+							></p>
 
 							<h6>Sample Input</h6>
-							<p className="content">{this.state.sampleInput}</p>
+							<p
+								className="content"
+								dangerouslySetInnerHTML={this.createMarkup(
+									this.state.sampleInput
+								)}
+							></p>
 
 							<h6>Sample Output</h6>
-							<p className="content">{this.state.sampleOutput}</p>
+							<p
+								className="content"
+								dangerouslySetInnerHTML={this.createMarkup(
+									this.state.sampleOutput
+								)}
+							></p>
 
 							<button
 								className="btn btn-sm btn-outline-dark"
