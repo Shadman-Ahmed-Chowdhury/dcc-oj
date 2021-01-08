@@ -121,7 +121,7 @@ class ProblemDetails extends React.Component {
 							></p>
 
 							<button
-								className="btn btn-sm btn-outline-dark"
+								className="btn btn-sm btn-outline-dark mb-5"
 								onClick={this.submitBtn}
 							>
 								Submit Solution
@@ -139,9 +139,10 @@ class ProblemDetails extends React.Component {
 								<li className="list-group-item ">Memory Limit: 256MB</li>
 								<li className="list-group-item ">
 									Tags:
-									{this.state.tags.map((tag) => {
-										return <div key={tag}>{tag}</div>;
-									})}
+									{this.state.tags !== undefined &&
+										this.state.tags.map((tag) => {
+											return <div key={tag}>{tag}</div>;
+										})}
 								</li>
 							</ul>
 						</div>

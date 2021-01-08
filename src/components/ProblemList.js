@@ -21,6 +21,8 @@ const ProblemList = () => {
 		fetchProblems();
 	}, []);
 
+	var a = 1;
+
 	if (loading) {
 		return (
 			<div className="ProblemList">
@@ -54,7 +56,7 @@ const ProblemList = () => {
 						<tbody>
 							{problems.map((doc) => (
 								<tr key={doc.id} className="col-md-4 mt-5">
-									<td>{doc.id}</td>
+									<td>{a++}</td>
 									<td>
 										<Link to={`/problems/details/${doc.id}`} className="title">
 											{doc.data().title}

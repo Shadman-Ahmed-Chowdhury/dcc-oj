@@ -7,6 +7,7 @@ import withReactContent from 'sweetalert2-react-content';
 const saveProblem = (
 	id,
 	title,
+	difficulty,
 	description,
 	input,
 	constraints,
@@ -25,6 +26,7 @@ const saveProblem = (
 		.set({
 			id,
 			title,
+			difficulty,
 			description,
 			input,
 			constraints,
@@ -34,6 +36,8 @@ const saveProblem = (
 			testCaseInput,
 			testCaseOutput,
 			problemSetter,
+			totalSubmissions: 0,
+			totalAcceptedSubmissions: 0,
 		})
 		.then(() => {
 			MySwal.fire({

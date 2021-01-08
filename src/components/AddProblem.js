@@ -9,6 +9,7 @@ import saveProblem from '../app-logic/saveProblem';
 class AddProblem extends React.Component {
 	state = {
 		title: '',
+		difficulty: 'Easy',
 		description: '',
 		input: '',
 		constraints: '',
@@ -24,7 +25,7 @@ class AddProblem extends React.Component {
 		this.setState({
 			[name]: value,
 		});
-		//console.log(value);
+		//console.log(this.state.difficulty);
 	};
 	handleDescription = (event, editor) => {
 		const data = editor.getData();
@@ -89,6 +90,7 @@ class AddProblem extends React.Component {
 		e.preventDefault();
 
 		const title = this.state.title;
+		const difficulty = this.state.difficulty;
 		const description = this.state.description;
 		const input = this.state.input;
 		const constraints = this.state.constraints;
@@ -106,6 +108,7 @@ class AddProblem extends React.Component {
 		saveProblem(
 			id,
 			title,
+			difficulty,
 			description,
 			input,
 			constraints,
@@ -136,6 +139,24 @@ class AddProblem extends React.Component {
 								className="form-control input-title"
 								required
 							/>
+						</div>
+
+						{/*  difficulty  */}
+						<div className="form-group">
+							<label htmlFor="difficulty" className="mb-1 mt-2">
+								Difficulty:
+							</label>
+							<select
+								value={this.state.difficulty}
+								onChange={this.handleChange}
+								name="difficulty"
+								className="form-control input-title"
+							>
+								<option value="Easy">Easy</option>
+								<option value="Medium">Medium</option>
+								<option value="Hard">Hard</option>
+								<option value="Advanced">Advanced</option>
+							</select>
 						</div>
 
 						{/*  description  */}
@@ -268,6 +289,7 @@ class AddProblem extends React.Component {
 							<input
 								type="submit"
 								className="btn btn-sm btn-outline-dark mt-3 mb-3"
+								value="Add Problem"
 							/>
 						</div>
 					</form>
