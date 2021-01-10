@@ -42,7 +42,7 @@ input[type="checkbox"] {
   visibility: hidden;
 }
 
-label {
+.toggle-label {
   margin-top: 2px;
   cursor: pointer;
   text-indent: -9999px;
@@ -54,7 +54,7 @@ label {
   position: relative;
 }
 
-label:after {
+.toggle-label:after {
   content: "";
   position: absolute;
   top: 0.25rem;
@@ -66,15 +66,15 @@ label:after {
   transition: 0.3s;
 }
 
-input:checked + label {
+input:checked + .toggle-label {
   background: #000000cc;
 }
 
-input:checked + label:after {
+input:checked + .toggle-label:after {
   left: calc(100% - 5px);
   transform: translateX(-100%);
 }
 
-label:active:after {
+.toggle-label:active:after {
   width: 30px;
 }

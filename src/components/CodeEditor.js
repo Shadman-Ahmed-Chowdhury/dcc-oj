@@ -77,7 +77,7 @@ export const CodeEditor = (props) => {
             checked={theme}
             onChange={(e) => toggleTheme(e.currentTarget.checked)}
           />
-          <label htmlFor="switch"></label>
+          <label className="toggle-label" htmlFor="switch"></label>
           <span className="theme-label">Dark</span>
         </div>
       </div>
