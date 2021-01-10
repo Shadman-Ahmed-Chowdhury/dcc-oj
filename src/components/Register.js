@@ -1,20 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './Login.css';
+import './Register.css';
 
-import loginUser from '../app-logic/loginUser';
-class Login extends React.Component {
-	login = (e) => {
+import registerUser from '../app-logic/registerUser';
+
+class Register extends React.Component {
+	register = (e) => {
 		e.preventDefault();
-		console.log('Login button clicked');
+		console.log('Register Button button clicked');
 		const email = this.email.value;
 		const password = this.password.value;
 
 		if (email === '' || password === '') {
 			alert("Email or Password can't be empty");
 		} else {
-			loginUser(email, password);
+			registerUser(email, password);
 			console.log(email);
 			this.formReset();
 		}
@@ -25,13 +26,13 @@ class Login extends React.Component {
 	}
 	render() {
 		return (
-			<div className="login">
-				<form onSubmit={this.login}>
-					<h2 className="text-center text">Welcome to DCC OJ</h2>
+			<div className="register">
+				<h2 className="text-center text">Welcome to DCC OJ</h2>
 
-					<h3 className="text-center text">Login</h3>
+				<h3 className="text-center text">Sign Up</h3>
 
-					<div className="loginForm">
+				<div className="registerForm">
+					<form onSubmit={this.register}>
 						<div className="form-group">
 							<label htmlFor="email" className="mt-2 mb-2 text">
 								Email:
@@ -55,16 +56,14 @@ class Login extends React.Component {
 							/>
 						</div>
 						<div className="text-center">
-							<button type="submit" className="btn btn-dark mt-3 loginBtn">
-								Login
-							</button>
+							<button className="btn btn-dark mt-3 registerBtn">Sign Up</button>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 				<p className="text-center mt-3 text">
-					Don't have an account?{' '}
-					<Link to="/register" className="registerLink">
-						Register Now!
+					Already have an account?{' '}
+					<Link to="/login" className="loginLink">
+						Login Now!
 					</Link>
 				</p>
 			</div>
@@ -72,4 +71,4 @@ class Login extends React.Component {
 	}
 }
 
-export default Login;
+export default Register;

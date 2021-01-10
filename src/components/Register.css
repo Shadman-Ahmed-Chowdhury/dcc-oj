@@ -1,4 +1,4 @@
-.login {
+.register {
 	background-color: #999;
 	width: 40%;
 	height: 60vh;
@@ -15,25 +15,24 @@
 	box-shadow: 0 5px 8px rgba(0, 0, 0, 0.26);
 }
 
-.loginForm {
+.registerForm {
 	width: 90%;
 	margin: 0 auto;
 }
 
-.loginBtn {
+.registerBtn {
 	color: white;
 	transition: 0.5s all ease-in-out;
 }
 
-.loginBtn:hover {
+.registerBtn:hover {
 	background-color: #ddd;
 	color: black;
 }
-
-.registerLink {
+.loginLink {
 	color: black;
 }
 
-.registerLink:hover {
+.loginLink:hover {
 	color: rgb(9, 35, 238);
 }
