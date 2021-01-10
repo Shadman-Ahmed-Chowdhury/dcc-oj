@@ -7,14 +7,18 @@
 .btn-group {
   display: flex;
   justify-content: space-between;
-  margin: 0px 2px;
+}
+.dropdown-lang {
+  margin-bottom: 10px;
+  background-color: #ededed;
 }
 .submit-btn {
-  margin-top: 20px;
+  margin-top: 0.8rem;
   float: right;
 }
-.theme-btn {
-  float: right;
+.theme-toggler {
+  display: flex;
+  justify-content: space-between;
 }
 .dropdown-item {
   font-size: 0.7em;
@@ -22,4 +26,55 @@
 .dropdown-menu {
   height: 300px;
   overflow-y: scroll;
+}
+
+.theme-label {
+  margin: 0px 10px;
+  font-size: 1em;
+  font-weight: bold;
+}
+.theme-label-light {
+  color: grey;
+}
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.toggle-label {
+  margin-top: 2px;
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 3rem;
+  height: 1.5rem;
+  background: grey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+.toggle-label:after {
+  content: "";
+  position: absolute;
+  top: 0.25rem;
+  left: 0.3rem;
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+input:checked + .toggle-label {
+  background: #000000cc;
+}
+
+input:checked + .toggle-label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+.toggle-label:active:after {
+  width: 30px;
 }

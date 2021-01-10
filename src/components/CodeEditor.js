@@ -1,12 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Editor from "@monaco-editor/react";
 import "./CodeEditor.css";
-import {
-  ButtonGroup,
-  DropdownButton,
-  Dropdown,
-  ToggleButton,
-} from "react-bootstrap";
+import { DropdownButton, Dropdown } from "react-bootstrap";
 
 export const CodeEditor = (props) => {
   const [theme, toggleTheme] = useState(false);
@@ -53,12 +48,13 @@ export const CodeEditor = (props) => {
   }
 
   return (
-    <div className="container">
+    <div>
       <div className="btn-group">
         <DropdownButton
           className="dropdown-lang"
           id="dropdown-basic-button"
           size="sm"
+          variant="secondary"
           title={selectedLanguage.name}
         >
           {languageList.map((language) => (
@@ -73,25 +69,32 @@ export const CodeEditor = (props) => {
             </Dropdown.Item>
           ))}
         </DropdownButton>
-        <ButtonGroup toggle className="mb-2">
-          <ToggleButton
-            className="btn btn-sm btn-outline-dark theme-btn"
+        <div className="theme-toggler">
+          <span className="theme-label theme-label-light">Light</span>
+          <input
             type="checkbox"
-            variant="secondary"
+            id="switch"
             checked={theme}
-            value="1"
             onChange={(e) => toggleTheme(e.currentTarget.checked)}
-          >
-            Switch Theme to {theme ? "Light" : "Dark"}
-          </ToggleButton>
-        </ButtonGroup>
+          />
+          <label className="toggle-label" htmlFor="switch"></label>
+          <span className="theme-label">Dark</span>
+        </div>
       </div>
       <Editor
         className="content"
-        height="60vh"
+        height="55vh"
         theme={theme ? "vs-dark" : "vs"}
         language="c"
-        value={""}
+        value={`
+        #include <stdio.h>
+
+        int main(void) {
+          char name[10];
+          scanf("%s", name);
+          printf("Hello, %s", name);
+          return 0;
+        }`}
         editorDidMount={handleEditorDidMount}
       />
 

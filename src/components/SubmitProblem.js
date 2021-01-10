@@ -3,6 +3,7 @@ import { CodeEditor } from "./CodeEditor";
 import "./SubmitProblem.css";
 import getProblemDetails from "../app-logic/getProblemDetails";
 import axios from "axios";
+import { Card, Alert } from "react-bootstrap";
 class SubmitProblem extends React.Component {
   state = {
     title: "",
@@ -13,6 +14,8 @@ class SubmitProblem extends React.Component {
     totalAcceptedSubmissions: "",
     totalSubmissions: "",
     loading: true,
+    token: "",
+    status: "",
   };
   componentDidMount() {
     if (this.props.user) {
@@ -56,7 +59,7 @@ class SubmitProblem extends React.Component {
       data: JSON.stringify({
         language_id: this.state.langID,
         source_code: this.state.sourceCode,
-        stdin: "Mow",
+        stdin: "Shadman",
         expected_output: "Hello, Shadman",
       }),
     };
@@ -64,7 +67,14 @@ class SubmitProblem extends React.Component {
       .request(options)
       .then((response) => {
         console.log(response.data.token);
-        setTimeout(() => this.getSubmission(response.data.token), 3000);
+        this.setState(
+          {
+            token: response.data.token,
+          },
+          () => {
+            setTimeout(() => this.getSubmission(response.data.token), 3000);
+          }
+        );
       })
       .catch(function (error) {
         console.error(error);
@@ -83,8 +93,15 @@ class SubmitProblem extends React.Component {
 
     axios
       .request(options)
-      .then(function (response) {
+      .then((response) => {
         console.log(response.data.status.description);
+        if (response.data.status.id === 1 || response.data.status.id === 2) {
+          setTimeout(() => this.getSubmission(response.data.token), 3000);
+        } else {
+          this.setState({
+            status: response.data.status.description,
+          });
+        }
       })
       .catch(function (error) {
         console.error(error);
@@ -102,20 +119,30 @@ class SubmitProblem extends React.Component {
     );
   };
   render() {
-    console.log(
-      JSON.stringify({
-        language_id: this.state.langID,
-        source_code: this.state.sourceCode,
-      })
-    );
     return (
-      <div className="container">
-        <h2> Submit your solution for problem: {this.state.title}</h2>
-        <CodeEditor
-          getCodeFromCodeEditor={this.getCodeFromCodeEditor}
-          getLanguageId={this.getLanguageId}
-          submit={this.handleSubmit}
-        />
+      <div className="container submission-container">
+        <div>
+          <h2> Submit your solution for problem: {this.state.title}</h2>
+          <CodeEditor
+            getCodeFromCodeEditor={this.getCodeFromCodeEditor}
+            getLanguageId={this.getLanguageId}
+            submit={this.handleSubmit}
+          />
+        </div>
+        <div>
+          <Card border="light" className="verdict">
+            <Card.Header>Submission Verdict</Card.Header>
+            <Card.Body>
+              {this.state.status === "" ? (
+                "Your submission verdict will appear here"
+              ) : this.state.status === "Accepted" ? (
+                <Alert variant="success">Well Done!</Alert>
+              ) : (
+                <Alert variant="danger">Oops! It's WA!</Alert>
+              )}
+            </Card.Body>
+          </Card>
+        </div>
       </div>
     );
   }
