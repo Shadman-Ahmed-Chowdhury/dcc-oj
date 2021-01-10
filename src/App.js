@@ -15,28 +15,58 @@ import SubmitProblem from './components/SubmitProblem';
 import SubmissionList from './components/SubmissionList';
 import Navbar from './components/Navbar';
 
-function App() {
-	return (
-		<div>
-			<Router>
-				<Navbar />
-				<div>
-					<Route path="/" exact component={Home} />
-					<Route path="/login" exact component={Login} />
-					<Route path="/register" exact component={Register} />
-					<Route path="/problems" exact component={ProblemList} />
-					<Route
-						path="/problems/details/:id"
-						exact
-						component={ProblemDetails}
-					/>
-					<Route path="/problems/new" exact component={AddProblem} />
-					<Route path="/submit/:id" exact component={SubmitProblem} />
-					<Route path="/submissions" exact component={SubmissionList} />
-				</div>
-			</Router>
-		</div>
-	);
+import fireConfig from './firebaseConfig/config';
+
+class App extends React.Component {
+	state = {
+		user: null,
+	};
+
+	async componentDidMount() {
+		await this.authListener();
+	}
+
+	authListener() {
+		fireConfig.auth().onAuthStateChanged((user) => {
+			if (user) {
+				this.setState({ user });
+			} else {
+				//window.location.assign('/login');
+			}
+		});
+	}
+	render() {
+		let authUser = this.state.user;
+		return (
+			<div>
+				<Router>
+					<Navbar user={authUser} />
+					<div>
+						<Route path="/" exact component={Home} />
+						<Route path="/login" exact component={Login} />
+						<Route path="/register" exact component={Register} />
+						<Route path="/problems" exact component={ProblemList} />
+						<Route
+							path="/problems/details/:id"
+							exact
+							component={ProblemDetails}
+						/>
+						<Route
+							path="/problems/new"
+							render={() => <AddProblem user={authUser} />}
+						/>
+						{/* <Route path="/problems/new" exact component={AddProblem} /> */}
+						<Route
+							path="/submit/:id"
+							render={(props) => <SubmitProblem user={authUser} {...props} />}
+						/>
+						{/* <Route path="/submit/:id" exact component={SubmitProblem} /> */}
+						<Route path="/submissions" exact component={SubmissionList} />
+					</div>
+				</Router>
+			</div>
+		);
+	}
 }
 
 export default App;

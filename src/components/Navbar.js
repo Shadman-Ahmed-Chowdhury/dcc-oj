@@ -3,7 +3,15 @@ import { Link } from 'react-router-dom';
 
 import './Navbar.css';
 
-const Navbar = () => {
+import MdArrowDropdownCircle from 'react-ionicons/lib/MdArrowDropdownCircle';
+
+import logoutUser from '../app-logic/logoutUser';
+
+const Navbar = ({ user }) => {
+	const logout = () => {
+		logoutUser();
+		window.location.assign('/');
+	};
 	return (
 		<div className="Navbar">
 			<nav className="navbar navbar-expand-lg bg-dark">
@@ -24,13 +32,34 @@ const Navbar = () => {
 								</Link>
 							</li>
 						</ul>
-						<ul className="navbar-nav">
-							<li className="nav-item">
-								<Link to="/login" className="link">
-									Login
-								</Link>
-							</li>
-						</ul>
+						{user ? (
+							<ul className="navbar-nav">
+								<li className="nav-item">
+									<a href="#!" className="nav-link user-email">
+										{user.email}
+										<MdArrowDropdownCircle fontSize="20px" color="white" />
+									</a>
+									<ul className="dp-menu level-1">
+										<li className="dp-item">
+											<span className="dp-link">Profile</span>
+										</li>
+										<li className="dp-item">
+											<span className="dp-link" onClick={() => logout()}>
+												Logout
+											</span>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						) : (
+							<ul className="navbar-nav">
+								<li className="nav-item">
+									<Link to="/login" className="link">
+										Login
+									</Link>
+								</li>
+							</ul>
+						)}
 					</div>
 				</div>
 			</nav>

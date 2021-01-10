@@ -14,3 +14,45 @@ a:hover {
 .link {
 	padding-left: 30px;
 }
+
+.user-email {
+	font-size: 14px;
+	color: white;
+}
+
+.dp-menu {
+	list-style: none;
+	padding: 0;
+	position: absolute;
+	border-left: 3px solid #000;
+	z-index: 2;
+}
+.dp-item {
+	position: relative;
+	padding: 10px;
+}
+.dp-link {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	padding: 5px;
+	cursor: pointer;
+	transition: 0.25s;
+}
+.dp-item:hover,
+.dp-item:hover > .dp-link {
+	background-color: #444;
+}
+
+.level-1 {
+	display: none;
+	background-color: #333;
+	width: 150px;
+}
+
+.nav-item:hover > .level-1 {
+	display: block;
+}
+.dp-item:hover > .level-2 {
+	display: block;
+}

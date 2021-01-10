@@ -20,6 +20,14 @@ class AddProblem extends React.Component {
 		outputTestCase: '',
 		tags: '',
 	};
+	componentDidMount() {
+		if (this.props.user) {
+			console.log(this.props.user.email);
+		} else {
+			window.location.assign('/problems');
+			alert('need to login');
+		}
+	}
 	handleChange = (event) => {
 		const target = event.target;
 		const { name, value } = target;
