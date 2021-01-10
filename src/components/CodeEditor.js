@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 
 export const CodeEditor = (props) => {
-  const [checked, setChecked] = useState(false);
+  const [theme, toggleTheme] = useState(false);
   const [isEditorReady, setIsEditorReady] = useState(false);
   const [languageList, setLanguageList] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState({
@@ -78,18 +78,18 @@ export const CodeEditor = (props) => {
             className="btn btn-sm btn-outline-dark theme-btn"
             type="checkbox"
             variant="secondary"
-            checked={checked}
+            checked={theme}
             value="1"
-            onChange={(e) => setChecked(e.currentTarget.checked)}
+            onChange={(e) => toggleTheme(e.currentTarget.checked)}
           >
-            Switch Theme to {checked ? "Light" : "Dark"}
+            Switch Theme to {theme ? "Light" : "Dark"}
           </ToggleButton>
         </ButtonGroup>
       </div>
       <Editor
         className="content"
         height="60vh"
-        theme={checked ? "dark" : "light"}
+        theme={theme ? "vs-dark" : "vs"}
         language="c"
         value={""}
         editorDidMount={handleEditorDidMount}
