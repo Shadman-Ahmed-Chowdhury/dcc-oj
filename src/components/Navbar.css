@@ -1,58 +1,66 @@
 a {
-	color: white;
-	text-decoration: none;
-	font-size: 18px;
-	transition: 0.5s ease-in-out;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.5s ease-in-out;
 }
 a:hover {
-	color: #aaa;
+  color: #aaa;
 }
 .navbar-brand {
-	font-size: 22px;
+  font-size: 22px;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(207, 202, 207, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+  border-color: rgb(207, 202, 207);
 }
 
 .link {
-	padding-left: 30px;
+  padding-left: 30px;
 }
 
 .user-email {
-	font-size: 14px;
-	color: white;
+  font-size: 14px;
+  color: white;
 }
 
 .dp-menu {
-	list-style: none;
-	padding: 0;
-	position: absolute;
-	border-left: 3px solid #000;
-	z-index: 2;
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  border-left: 3px solid #000;
+  z-index: 2;
 }
 .dp-item {
-	position: relative;
-	padding: 10px;
+  position: relative;
+  padding: 10px;
 }
 .dp-link {
-	color: #fff;
-	text-decoration: none;
-	display: block;
-	padding: 5px;
-	cursor: pointer;
-	transition: 0.25s;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.25s;
 }
 .dp-item:hover,
 .dp-item:hover > .dp-link {
-	background-color: #444;
+  background-color: #444;
 }
 
 .level-1 {
-	display: none;
-	background-color: #333;
-	width: 150px;
+  display: none;
+  background-color: #333;
+  width: 150px;
 }
 
 .nav-item:hover > .level-1 {
-	display: block;
+  display: block;
 }
 .dp-item:hover > .level-2 {
-	display: block;
+  display: block;
 }
