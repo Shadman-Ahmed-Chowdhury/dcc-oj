@@ -10,7 +10,6 @@ import logoutUser from "../app-logic/logoutUser";
 const Navbar = ({ user }) => {
   const logout = () => {
     logoutUser();
-    window.location.assign("/");
   };
   return (
     <div className="Navbar">
