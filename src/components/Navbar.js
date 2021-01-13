@@ -41,6 +41,16 @@ const Navbar = ({ user }) => {
                   Submissions
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to="/about" className="link">
+                  About
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/docs" className="link">
+                  Docs
+                </Link>
+              </li>
             </ul>
             {user ? (
               <ul className="navbar-nav">
