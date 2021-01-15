@@ -5,6 +5,8 @@ import DOMPurify from 'dompurify';
 
 import './AddProblem.css';
 import saveProblem from '../app-logic/saveProblem';
+import authListener from '../app-logic/authListener';
+import getUserData from '../app-logic/getUserData';
 
 class AddProblem extends React.Component {
 	state = {
@@ -19,14 +21,25 @@ class AddProblem extends React.Component {
 		inputTestCase: '',
 		outputTestCase: '',
 		tags: '',
+		username: '',
 	};
 	componentDidMount() {
-		if (this.props.user) {
-			console.log(this.props.user.email);
-		} else {
-			window.location.assign('/problems');
-			alert('need to login');
-		}
+		authListener().onAuthStateChanged((user) => {
+			if (user) {
+				console.log(user.email);
+				const promise = getUserData(user.uid);
+				promise.then((doc) => {
+					console.log(doc.data().username);
+					const uname = doc.data().username;
+					this.setState({
+						username: uname,
+					});
+				});
+			} else {
+				console.log('Logged out');
+				window.location.assign('/login');
+			}
+		});
 	}
 	handleChange = (event) => {
 		const target = event.target;
@@ -108,7 +121,7 @@ class AddProblem extends React.Component {
 		const sampleOutput = this.state.sampleOutput;
 		const testCaseInput = this.state.inputTestCase;
 		const testCaseOutput = this.state.outputTestCase;
-		const problemSetter = 'Shadman Ahmed';
+		const problemSetter = this.state.username;
 		const tagsString = this.state.tags;
 
 		const tags = tagsString.split(',');
