@@ -33,6 +33,7 @@ class AddProblem extends React.Component {
 					const uname = doc.data().username;
 					this.setState({
 						username: uname,
+						uid: user.uid,
 					});
 				});
 			} else {
@@ -123,6 +124,7 @@ class AddProblem extends React.Component {
 		const testCaseOutput = this.state.outputTestCase;
 		const problemSetter = this.state.username;
 		const tagsString = this.state.tags;
+		const uid = this.state.uid;
 
 		const tags = tagsString.split(',');
 
@@ -143,7 +145,8 @@ class AddProblem extends React.Component {
 			testCaseInput,
 			testCaseOutput,
 			problemSetter,
-			tags
+			tags,
+			uid
 		);
 	};
 	render() {
