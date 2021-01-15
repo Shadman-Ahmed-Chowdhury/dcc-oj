@@ -1,38 +1,38 @@
 .register {
-	background-color: #999;
-	width: 40%;
-	height: 60vh;
-	margin: 100px auto;
-	box-shadow: 0 5px 8px rgba(0, 0, 0, 0.26);
-	color: white;
+  background-color: #999;
+  width: 40%;
+  height: 70vh;
+  margin: 70px auto;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.26);
+  color: white;
 }
 
 .text {
-	text-shadow: 0 5px 8px rgba(0, 0, 0, 0.26);
+  text-shadow: 0 5px 8px rgba(0, 0, 0, 0.26);
 }
 
 .form-control {
-	box-shadow: 0 5px 8px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.26);
 }
 
 .registerForm {
-	width: 90%;
-	margin: 0 auto;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .registerBtn {
-	color: white;
-	transition: 0.5s all ease-in-out;
+  color: white;
+  transition: 0.5s all ease-in-out;
 }
 
 .registerBtn:hover {
-	background-color: #ddd;
-	color: black;
+  background-color: #ddd;
+  color: black;
 }
 .loginLink {
-	color: black;
+  color: black;
 }
 
 .loginLink:hover {
-	color: rgb(9, 35, 238);
+  color: rgb(9, 35, 238);
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./Navbar.css";
@@ -6,17 +6,50 @@ import "./Navbar.css";
 import MdArrowDropdownCircle from "react-ionicons/lib/MdArrowDropdownCircle";
 
 import logoutUser from "../app-logic/logoutUser";
+import getUserData from "../app-logic/getUserData";
+import authListener from "../app-logic/authListener";
 
-const Navbar = ({ user }) => {
+const Navbar = () => {
+  const [user, setUser] = useState({});
+  const [username, setUsername] = useState("");
+  //Use Effect
+  useEffect(() => {
+    authListener().onAuthStateChanged((user) => {
+      setUser(user);
+      if (user) {
+        console.log(user.email);
+      } else {
+        console.log("Logged out");
+      }
+    });
+    const fetchUser = () => {
+      console.log(user);
+      //Getting data from firestore.
+      if (user === null || user === {}) {
+        setUsername("");
+        console.log(user);
+        return;
+      } else {
+        const promise = getUserData(user.uid);
+        promise.then((doc) => {
+          console.log(doc.data().username);
+          const uname = doc.data().username;
+          setUsername(uname);
+        });
+      }
+    };
+    fetchUser();
+  }, [user]);
   const logout = () => {
     logoutUser();
+    setUser(null);
   };
   return (
     <div className="Navbar">
       <nav className="navbar navbar-expand-lg bg-dark">
         <div className="container">
           <Link to="/" className="navbar-brand">
-            Online Judge
+            Online Judge {username}
           </Link>
           <button
             className="navbar-toggler"
