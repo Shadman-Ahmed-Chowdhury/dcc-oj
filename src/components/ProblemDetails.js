@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BounceLoader } from 'react-spinners';
 import DOMPurify from 'dompurify';
 
@@ -70,6 +71,7 @@ class ProblemDetails extends React.Component {
 				tags: doc.data().tags,
 				uid: doc.data().uid,
 				loading: false,
+				id: id,
 			});
 		});
 	}
@@ -178,9 +180,12 @@ class ProblemDetails extends React.Component {
 							</div>
 							{this.state.ownProblem ? (
 								<div className="mt-3">
-									<button className="btn btn-sm btn-outline-dark">
+									<Link
+										to="/problems/edit/52857"
+										className="btn btn-sm btn-outline-dark"
+									>
 										Edit Problem
-									</button>
+									</Link>
 								</div>
 							) : null}
 						</div>
