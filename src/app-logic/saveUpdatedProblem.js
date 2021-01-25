@@ -4,7 +4,7 @@ import firestore from "./firestore";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-const saveProblem = (
+const saveUpdatedProblem = (
   id,
   title,
   difficulty,
@@ -16,16 +16,14 @@ const saveProblem = (
   sampleOutput,
   testCaseInput,
   testCaseOutput,
-  problemSetter,
-  tags,
-  uid
+  tags
 ) => {
   const MySwal = withReactContent(Swal);
   MySwal.showLoading();
   firestore
     .collection("Problems")
     .doc(id)
-    .set({
+    .update({
       id,
       title,
       difficulty,
@@ -37,16 +35,12 @@ const saveProblem = (
       sampleOutput,
       testCaseInput,
       testCaseOutput,
-      problemSetter,
       tags,
-      totalSubmissions: 0,
-      totalAcceptedSubmissions: 0,
-      uid,
     })
     .then(() => {
       MySwal.fire({
         icon: "success",
-        title: "Problem Saved!",
+        title: "Problem Updated!",
         confirmButtonText: "Okay",
       }).then(() => {
         window.location.assign("/problems");
@@ -57,4 +51,4 @@ const saveProblem = (
     });
 };
 
-export default saveProblem;
+export default saveUpdatedProblem;

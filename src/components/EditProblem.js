@@ -8,6 +8,8 @@ import "./EditProblem.css";
 import authListener from "../app-logic/authListener";
 import getUserData from "../app-logic/getUserData";
 import getProblemDetails from "../app-logic/getProblemDetails";
+import saveUpdatedProblem from "../app-logic/saveUpdatedProblem";
+
 class EditProblem extends React.Component {
   state = {
     title: "",
@@ -143,6 +145,39 @@ class EditProblem extends React.Component {
       __html: DOMPurify.sanitize(html),
     };
   };
+
+  updateProblem = (e) => {
+    e.preventDefault();
+    const id = this.state.id;
+    const title = this.state.title;
+    const difficulty = this.state.difficulty;
+    const description = this.state.description;
+    const input = this.state.input;
+    const constraints = this.state.constraints;
+    const output = this.state.output;
+    const sampleInput = this.state.sampleInput;
+    const sampleOutput = this.state.sampleOutput;
+    const testCaseInput = this.state.inputTestCase;
+    const testCaseOutput = this.state.outputTestCase;
+    const tags = this.state.tags;
+
+    //const tags = tagsString.split(",");
+
+    saveUpdatedProblem(
+      id,
+      title,
+      difficulty,
+      description,
+      input,
+      constraints,
+      output,
+      sampleInput,
+      sampleOutput,
+      testCaseInput,
+      testCaseOutput,
+      tags
+    );
+  };
   render() {
     if (this.state.loading) {
       return (
@@ -155,12 +190,10 @@ class EditProblem extends React.Component {
     }
     return (
       <div>
-        <h2>Edit Problem: {this.state.title}</h2>
-        <p>{this.state.description}</p>
         <div>
           <div className="container">
-            <h3 className="mt-3">Add a custom problem</h3>
-            <form className="custom-form" onSubmit={this.addProblem}>
+            <h3 className="mt-3">Edit your problem: {this.state.title}</h3>
+            <form className="custom-form" onSubmit={this.updateProblem}>
               {/*  title  */}
               <div className="form-group">
                 <label htmlFor="title" className="mb-1 mt-2">
