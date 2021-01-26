@@ -1,9 +1,13 @@
 import React from "react";
 import { CodeEditor } from "./CodeEditor";
 import "./SubmitProblem.css";
-import getProblemDetails from "../app-logic/getProblemDetails";
+
 import axios from "axios";
 import { Card, Alert } from "react-bootstrap";
+
+import authListener from "../app-logic/authListener";
+import getProblemDetails from "../app-logic/getProblemDetails";
+import getUserData from "../app-logic/getUserData";
 class SubmitProblem extends React.Component {
   state = {
     title: "",
@@ -16,15 +20,27 @@ class SubmitProblem extends React.Component {
     loading: true,
     token: "",
     status: "",
+    username: "",
+    uid: "",
   };
   componentDidMount() {
-    if (this.props.user) {
-      console.log(this.props.user.email);
-    } else {
-      const id = this.props.match.params.id;
-      window.location.assign(`/problems/details/${id}`);
-      alert("need to login");
-    }
+    authListener().onAuthStateChanged((user) => {
+      if (user) {
+        console.log(user.email);
+        const promise = getUserData(user.uid);
+        promise.then((doc) => {
+          console.log(doc.data().username);
+          const uname = doc.data().username;
+          this.setState({
+            username: uname,
+            uid: user.uid,
+          });
+        });
+      } else {
+        console.log("Logged out");
+        window.location.assign("/login");
+      }
+    });
     this.loadProblemDetails();
   }
 
