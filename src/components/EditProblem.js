@@ -25,12 +25,14 @@ class EditProblem extends React.Component {
     totalAcceptedSubmissions: "",
     totalSubmissions: "",
     tags: [],
+    ownProblem: false,
     username: "",
-    uid: "",
+    uid: "", //Uid of the problem setter
     loading: true,
     id: "",
   };
   componentDidMount() {
+    this.getProblemData();
     authListener().onAuthStateChanged((user) => {
       if (user) {
         console.log(user.email);
@@ -38,18 +40,26 @@ class EditProblem extends React.Component {
         promise.then((doc) => {
           console.log(doc.data().username);
           const uname = doc.data().username;
+          console.log(uname);
           this.setState({
             username: uname,
-            uid: user.uid,
           });
+          const userId = doc.data().uid;
+          console.log(this.state.uid);
+          console.log(userId);
+          if (userId === this.state.uid) {
+            this.setState({
+              ownProblem: true,
+            });
+          } else {
+            window.location.assign("/problems");
+          }
         });
       } else {
         console.log("Logged out");
         window.location.assign("/login");
       }
     });
-
-    this.getProblemData();
   }
 
   getProblemData() {
@@ -136,7 +146,7 @@ class EditProblem extends React.Component {
   handleTestCaseOutput = (event, editor) => {
     const data = editor.getData();
     this.setState({
-      sampleOutput: data,
+      outputTestCase: data,
     });
     //console.log(data);
   };
@@ -179,6 +189,7 @@ class EditProblem extends React.Component {
     );
   };
   render() {
+    console.log(this.state.ownProblem);
     if (this.state.loading) {
       return (
         <div className="ProblemDetails">
