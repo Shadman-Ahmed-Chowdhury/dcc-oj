@@ -52,6 +52,15 @@ a:hover {
   background-color: #444;
 }
 
+.profile-link {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
 .level-1 {
   display: none;
   background-color: #333;
