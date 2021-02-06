@@ -4,7 +4,7 @@ import "./SubmitProblem.css";
 
 import axios from "axios";
 import { Card, Alert } from "react-bootstrap";
-
+import saveSubmission from "../app-logic/saveSubmission";
 import authListener from "../app-logic/authListener";
 import getProblemDetails from "../app-logic/getProblemDetails";
 import getUserData from "../app-logic/getUserData";
@@ -16,6 +16,7 @@ class SubmitProblem extends React.Component {
     expected_output: "",
     source_code: "",
     language_id: "",
+    language: "",
     totalAcceptedSubmissions: "",
     totalSubmissions: "",
     loading: true,
@@ -23,6 +24,7 @@ class SubmitProblem extends React.Component {
     status: "",
     username: "",
     uid: "",
+    problemId: "",
   };
   componentDidMount() {
     authListener().onAuthStateChanged((user) => {
@@ -48,6 +50,7 @@ class SubmitProblem extends React.Component {
     promise.then((doc) => {
       this.setState({
         title: doc.data().title,
+        problemId: id,
         description: doc.data().description,
         difficulty: doc.data().difficulty,
         stdin: doc.data().sampleInput,
@@ -108,9 +111,31 @@ class SubmitProblem extends React.Component {
         if (response.data.status.id === 1 || response.data.status.id === 2) {
           setTimeout(() => this.getSubmission(response.data.token), 3000);
         } else {
-          this.setState({
-            status: response.data.status.description,
-          });
+          this.setState(
+            {
+              status: response.data.status.description,
+            },
+            () => {
+              const date = new Date();
+              const submissionId = Date.parse(date).toString();
+              const submissionData = {
+                submissionId: submissionId,
+                token: response.data.token,
+                when: date.toUTCString(),
+                problemId: this.state.problemId,
+                problemTitle: this.state.title,
+                uid: this.state.uid,
+                username: this.state.username,
+                sourceCode: this.state.source_code,
+                language: this.state.language,
+                verdict: this.state.status,
+                time: response.data.time,
+                memory: response.data.time,
+              };
+              saveSubmission(submissionData);
+              console.log(submissionData);
+            }
+          );
         }
       })
       .catch(function (error) {
@@ -122,6 +147,7 @@ class SubmitProblem extends React.Component {
       {
         source_code: source_code,
         language_id: language.id,
+        language: language.name,
       },
       () => {
         this.submitToJudge();

@@ -1,0 +1,25 @@
+th,
+td {
+  text-align: center;
+}
+
+h2 {
+  padding: 1rem 0;
+}
+
+.accepted {
+  color: #5cb85c;
+}
+.not-accepted {
+  color: #d9534f;
+}
+.title {
+  color: #37c;
+}
+
+.loader {
+  margin: 200px 0;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
