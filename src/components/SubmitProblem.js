@@ -27,10 +27,8 @@ class SubmitProblem extends React.Component {
   componentDidMount() {
     authListener().onAuthStateChanged((user) => {
       if (user) {
-        console.log(user.email);
         const promise = getUserData(user.uid);
         promise.then((doc) => {
-          console.log(doc.data().username);
           const uname = doc.data().username;
           this.setState({
             username: uname,
@@ -47,7 +45,6 @@ class SubmitProblem extends React.Component {
 
   loadProblemDetails() {
     const id = this.props.match.params.id;
-    console.log(id);
 
     const promise = getProblemDetails(id);
     promise.then((doc) => {

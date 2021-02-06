@@ -45,7 +45,7 @@ class Profile extends React.Component {
                 <div className="d-flex flex-column align-items-center text-center">
                   <img
                     src="https://lh3.googleusercontent.com/-izGQ-LUODI0/YBjnuaCmiPI/AAAAAAAAEBQ/_8vRbwjMm-Yb-yCFEDqE8yxBNPpRfyanwCK8BGAsYHg/s0/user-avatar-icon-sign-symbol-vector-4001945.jpg"
-                    alt="Profile image"
+                    alt="Avatar"
                     className="rounded-circle"
                     width="120"
                   />
