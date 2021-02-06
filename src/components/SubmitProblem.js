@@ -12,10 +12,10 @@ import getUserData from "../app-logic/getUserData";
 class SubmitProblem extends React.Component {
   state = {
     title: "",
-    input: "",
-    output: "",
-    sourceCode: "",
-    langID: "",
+    stdin: "",
+    expected_output: "",
+    source_code: "",
+    language_id: "",
     totalAcceptedSubmissions: "",
     totalSubmissions: "",
     loading: true,
@@ -36,7 +36,6 @@ class SubmitProblem extends React.Component {
           });
         });
       } else {
-        console.log("Logged out");
         window.location.assign("/login");
       }
     });
@@ -45,15 +44,14 @@ class SubmitProblem extends React.Component {
 
   loadProblemDetails() {
     const id = this.props.match.params.id;
-
     const promise = getProblemDetails(id);
     promise.then((doc) => {
       this.setState({
         title: doc.data().title,
         description: doc.data().description,
         difficulty: doc.data().difficulty,
-        input: doc.data().input,
-        output: doc.data().output,
+        stdin: doc.data().sampleInput,
+        expected_output: doc.data().sampleOutput,
         totalAcceptedSubmissions: doc.data().totalAcceptedSubmissions,
         totalSubmissions: doc.data().totalSubmissions,
         loading: false,
@@ -71,16 +69,15 @@ class SubmitProblem extends React.Component {
         "x-rapidapi-host": process.env.REACT_APP_JUDGE_API_HOST,
       },
       data: JSON.stringify({
-        language_id: this.state.langID,
-        source_code: this.state.sourceCode,
-        stdin: "Shadman",
-        expected_output: "Hello, Shadman",
+        language_id: this.state.language_id,
+        source_code: this.state.source_code,
+        stdin: this.state.stdin,
+        expected_output: this.state.expected_output,
       }),
     };
     axios
       .request(options)
       .then((response) => {
-        console.log(response.data.token);
         this.setState(
           {
             token: response.data.token,
@@ -108,7 +105,6 @@ class SubmitProblem extends React.Component {
     axios
       .request(options)
       .then((response) => {
-        console.log(response.data.status.description);
         if (response.data.status.id === 1 || response.data.status.id === 2) {
           setTimeout(() => this.getSubmission(response.data.token), 3000);
         } else {
@@ -121,11 +117,11 @@ class SubmitProblem extends React.Component {
         console.error(error);
       });
   };
-  handleSubmit = (sourceCode, language) => {
+  handleSubmissionData = (source_code, language) => {
     this.setState(
       {
-        sourceCode: sourceCode,
-        langID: language.id,
+        source_code: source_code,
+        language_id: language.id,
       },
       () => {
         this.submitToJudge();
@@ -140,7 +136,7 @@ class SubmitProblem extends React.Component {
           <CodeEditor
             getCodeFromCodeEditor={this.getCodeFromCodeEditor}
             getLanguageId={this.getLanguageId}
-            submit={this.handleSubmit}
+            submitButton={this.handleSubmissionData}
           />
         </div>
         <div>
@@ -150,9 +146,9 @@ class SubmitProblem extends React.Component {
               {this.state.status === "" ? (
                 "Your submission verdict will appear here"
               ) : this.state.status === "Accepted" ? (
-                <Alert variant="success">Well Done!</Alert>
+                <Alert variant="success">{this.state.status}</Alert>
               ) : (
-                <Alert variant="danger">Oops! It's WA!</Alert>
+                <Alert variant="danger">{this.state.status}</Alert>
               )}
             </Card.Body>
           </Card>

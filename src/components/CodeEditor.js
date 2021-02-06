@@ -5,6 +5,10 @@ import { DropdownButton, Dropdown } from "react-bootstrap";
 
 export const CodeEditor = (props) => {
   const [theme, toggleTheme] = useState(false);
+  const [codeEditorText, setCodeEditorText] = useState(`
+/* Select a Language
+ * Write or Paste Your Code Here
+ */`);
   const [isEditorReady, setIsEditorReady] = useState(false);
   const [languageList, setLanguageList] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState({
@@ -32,9 +36,10 @@ export const CodeEditor = (props) => {
 
   const handleLanguageSelect = (language) => {
     setSelectedLanguage(language);
+    setCodeEditorText("");
   };
 
-  function sendSourceCodeandLanguageId(event) {
+  function passDataToSubmitProblem(event) {
     if (selectedLanguage.id === null) {
       alert("Select A Language");
       event.preventDefault();
@@ -43,7 +48,7 @@ export const CodeEditor = (props) => {
       event.preventDefault();
     } else {
       const sourceCode = valueGetter.current();
-      props.submit(sourceCode, selectedLanguage);
+      props.submitButton(sourceCode, selectedLanguage);
     }
   }
 
@@ -86,21 +91,13 @@ export const CodeEditor = (props) => {
         height="55vh"
         theme={theme ? "vs-dark" : "vs"}
         language="c"
-        value={`
-        #include <stdio.h>
-
-        int main(void) {
-          char name[10];
-          scanf("%s", name);
-          printf("Hello, %s", name);
-          return 0;
-        }`}
+        value={codeEditorText}
         editorDidMount={handleEditorDidMount}
       />
 
       <button
         className="btn btn-sm btn-outline-dark submit-btn"
-        onClick={sendSourceCodeandLanguageId}
+        onClick={passDataToSubmitProblem}
         disabled={!isEditorReady && !selectedLanguage.id}
       >
         Submit!
