@@ -34,7 +34,6 @@ const saveSubmission = (submissionData) => {
     })
     .then(function () {
       console.log("Submission added to database!");
-      console.log(when);
     })
     .catch(function (error) {
       console.error("Error writing document: ", error);

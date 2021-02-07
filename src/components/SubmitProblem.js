@@ -121,7 +121,7 @@ class SubmitProblem extends React.Component {
               const submissionData = {
                 submissionId: submissionId,
                 token: response.data.token,
-                when: date.toUTCString(),
+                when: date.toLocaleString("default", { timeZoneName: "short" }),
                 problemId: this.state.problemId,
                 problemTitle: this.state.title,
                 uid: this.state.uid,
@@ -130,7 +130,7 @@ class SubmitProblem extends React.Component {
                 language: this.state.language,
                 verdict: this.state.status,
                 time: response.data.time,
-                memory: response.data.time,
+                memory: response.data.memory,
               };
               saveSubmission(submissionData);
               console.log(submissionData);

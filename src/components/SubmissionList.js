@@ -39,12 +39,12 @@ const SubmissionList = () => {
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">When</th>
-                <th scope="col">username</th>
+                <th scope="col">Username</th>
                 <th scope="col">Problem</th>
                 <th scope="col">Language</th>
                 <th scope="col">Verdict</th>
-                <th scope="col">Execution Time</th>
-                <th scope="col">Memory</th>
+                <th scope="col">Execution Time (s)</th>
+                <th scope="col">Memory (KB)</th>
               </tr>
             </thead>
             <tbody>
