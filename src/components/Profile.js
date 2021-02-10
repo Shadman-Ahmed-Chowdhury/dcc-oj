@@ -53,9 +53,7 @@ class Profile extends React.Component {
                     <h4>{this.state.username}</h4>
                     <p>Profession</p>
                     <p>Address</p>
-                    <button className="btn btn-outline-dark">
-                      Edit Profile{" "}
-                    </button>
+                    <button className="btn btn-style">Edit Profile </button>
                   </div>
                 </div>
               </div>

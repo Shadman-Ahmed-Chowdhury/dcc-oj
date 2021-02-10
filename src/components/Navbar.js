@@ -60,7 +60,11 @@ const Navbar = () => {
   };
   return (
     <div className="Navbar">
-      <nav className="navbar navbar-expand-lg bg-dark">
+      <nav
+        className="navbar fixed-top navbar-expand-lg"
+        style={{ backgroundColor: "#543F6F" }}
+        fixed="top"
+      >
         <div className="container">
           <Link to="/" className="navbar-brand">
             Online Judge
@@ -106,7 +110,10 @@ const Navbar = () => {
                     {username}
                     <MdArrowDropdownCircle fontSize="20px" color="white" />
                   </a>
-                  <ul className="dp-menu level-1">
+                  <ul
+                    className="dp-menu level-1"
+                    style={{ backgroundColor: "#543F6F" }}
+                  >
                     <li className="dp-item">
                       <span className="dp-link">
                         <Link

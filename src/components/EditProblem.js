@@ -194,7 +194,7 @@ class EditProblem extends React.Component {
       return (
         <div className="ProblemDetails">
           <div className="loader">
-            <BounceLoader size={100} />
+            <BounceLoader size={100} color="#543F6F" />
           </div>
         </div>
       );
@@ -390,7 +390,7 @@ class EditProblem extends React.Component {
               <div className="form-group">
                 <input
                   type="submit"
-                  className="btn btn-sm btn-outline-dark mt-3 mb-3"
+                  className="btn btn-sm btn-style mt-3 mb-3"
                   value="Update Problem"
                 />
               </div>

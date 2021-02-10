@@ -96,7 +96,7 @@ export const CodeEditor = (props) => {
       />
 
       <button
-        className="btn btn-sm btn-outline-dark submit-btn"
+        className="btn btn-sm btn-style submit-btn"
         onClick={passDataToSubmitProblem}
         disabled={!isEditorReady && !selectedLanguage.id}
       >

@@ -92,7 +92,7 @@ class ProblemDetails extends React.Component {
       return (
         <div className="ProblemDetails">
           <div className="loader">
-            <BounceLoader size={100} />
+            <BounceLoader size={100} color="#543F6F" />
           </div>
         </div>
       );
@@ -150,7 +150,7 @@ class ProblemDetails extends React.Component {
               ></p>
 
               <button
-                className="btn btn-sm btn-outline-dark mb-5"
+                className="btn btn-sm btn-style mb-5"
                 onClick={this.submitBtn}
               >
                 Submit Solution
@@ -183,7 +183,7 @@ class ProblemDetails extends React.Component {
                 <div className="mt-3">
                   <Link
                     to={`/problems/edit/${this.state.id}`}
-                    className="btn btn-sm btn-outline-dark"
+                    className="btn btn-sm btn-style"
                   >
                     Edit Problem
                   </Link>

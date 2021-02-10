@@ -1,0 +1,15 @@
+.shadowed {
+  -webkit-filter: drop-shadow(10px 10px 10px #b4b2f3);
+  filter: drop-shadow(0px 0px 20px #b4b2f3);
+}
+.features {
+  margin-top: 700px;
+  background-image: linear-gradient(white, #b4b2f3);
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+}
+.card-img {
+  width: auto;
+  height: 350px;
+}
