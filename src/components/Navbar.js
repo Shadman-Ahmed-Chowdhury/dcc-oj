@@ -12,7 +12,7 @@ import getUserData from "../app-logic/getUserData";
 const Navbar = () => {
   const [user, setUser] = useState({});
   const [username, setUsername] = useState("");
-  const [uid, setUid] = useState("");
+  //const [uid, setUid] = useState("");
   //const [username, setUsername] = useState('');
   //Use Effect
   useEffect(() => {
@@ -21,14 +21,14 @@ const Navbar = () => {
       if (user) {
         const promise = getUserData(user.uid);
         promise.then((doc) => {
-          console.log(doc.data().username);
+          // console.log(doc.data().username);
           const uname = doc.data().username;
           // this.setState({
           //   username: uname,
           //   uid: user.uid,
           // });
           setUsername(uname);
-          setUid(user.uid);
+          //setUid(user.uid);
         });
       } else {
         console.log("Logged out");
