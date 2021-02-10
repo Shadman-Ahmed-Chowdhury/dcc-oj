@@ -19,6 +19,10 @@ a:hover {
   border-color: rgb(207, 202, 207);
 }
 
+.bg-color {
+  color: #543f6f;
+}
+
 .link {
   padding-left: 30px;
 }

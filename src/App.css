@@ -1,4 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Andika+New+Basic:ital,wght@0,400;0,700;1,400&display=swap");
 body {
   font-family: "Andika New Basic", sans-serif;
+  margin-top: 90px;
+  color: #543f6f;
+}
+.loader {
+  margin: 400px 0;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.btn-style {
+  border-color: #543f6f;
+  color: #543f6f;
+}
+
+.btn-style:hover {
+  background-color: #b4b2f3;
+  color: #2f1e44;
 }

@@ -1,27 +1,20 @@
 th,
 td {
-	text-align: center;
+  text-align: center;
 }
 
 h2 {
-	padding: 1rem 0;
+  padding: 1rem 0;
 }
 
 .btn-sm {
-	transition: 0.5s all ease-in-out;
+  transition: 0.5s all ease-in-out;
 }
 
 .title {
-	color: black;
+  color: black;
 }
 
 .title:hover {
-	color: #37c;
-}
-
-.loader {
-	margin: 200px 0;
-	text-align: center;
-	justify-content: center;
-	align-items: center;
+  color: #37c;
 }

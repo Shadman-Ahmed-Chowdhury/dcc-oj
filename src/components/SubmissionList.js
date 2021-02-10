@@ -24,7 +24,7 @@ const SubmissionList = () => {
     return (
       <div className="ProblemList">
         <div className="loader">
-          <BounceLoader size={100} />
+          <BounceLoader size={100} color="#543F6F" />
         </div>
       </div>
     );
