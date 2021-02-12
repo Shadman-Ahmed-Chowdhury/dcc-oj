@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
 
-import getProblems from "../app-logic/getProblems";
+import getProblems from "../../app-logic/getProblems";
 
 import "./ProblemList.css";
 

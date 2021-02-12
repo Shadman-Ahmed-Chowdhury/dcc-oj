@@ -1,13 +1,13 @@
 import React from "react";
-import { CodeEditor } from "./CodeEditor";
+import { CodeEditor } from "../CodeEditor/CodeEditor";
 import "./SubmitProblem.css";
 
 import axios from "axios";
 import { Card, Alert } from "react-bootstrap";
-import saveSubmission from "../app-logic/saveSubmission";
-import authListener from "../app-logic/authListener";
-import getProblemDetails from "../app-logic/getProblemDetails";
-import getUserData from "../app-logic/getUserData";
+import saveSubmission from "../../app-logic/saveSubmission";
+import authListener from "../../app-logic/authListener";
+import getProblemDetails from "../../app-logic/getProblemDetails";
+import getUserData from "../../app-logic/getUserData";
 
 class SubmitProblem extends React.Component {
   state = {
@@ -121,7 +121,7 @@ class SubmitProblem extends React.Component {
               const submissionData = {
                 submissionId: submissionId,
                 token: response.data.token,
-                when: date.toLocaleString("default", { timeZoneName: "short" }),
+                when: date.toLocaleString("default"),
                 problemId: this.state.problemId,
                 problemTitle: this.state.title,
                 uid: this.state.uid,

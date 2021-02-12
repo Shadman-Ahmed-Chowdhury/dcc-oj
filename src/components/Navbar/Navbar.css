@@ -2,10 +2,11 @@ a {
   color: white;
   text-decoration: none;
   font-size: 18px;
-  transition: 0.5s ease-in-out;
+  transition: 0.2 ease-in-out;
 }
 a:hover {
-  color: #aaa;
+  color: #b4b2f3;
+  text-shadow: 0px 0px 1px #ffffff;
 }
 .navbar-brand {
   font-size: 22px;
@@ -18,7 +19,6 @@ a:hover {
 .navbar-toggler {
   border-color: rgb(207, 202, 207);
 }
-
 .bg-color {
   color: #543f6f;
 }
@@ -34,14 +34,12 @@ a:hover {
 
 .dp-menu {
   list-style: none;
-  padding: 0;
+  padding: 10px;
   position: absolute;
-  border-left: 3px solid #000;
   z-index: 2;
 }
 .dp-item {
   position: relative;
-  padding: 10px;
 }
 .dp-link {
   color: #fff;
@@ -53,21 +51,20 @@ a:hover {
 }
 .dp-item:hover,
 .dp-item:hover > .dp-link {
-  background-color: #444;
+  color: #b4b2f3;
+  text-shadow: 0px 0px 1px #ffffff;
 }
 
 .profile-link {
   color: #fff;
   text-decoration: none;
   display: block;
-  padding: 5px;
   cursor: pointer;
   transition: 0.25s;
 }
 
 .level-1 {
   display: none;
-  background-color: #333;
   width: 150px;
 }
 

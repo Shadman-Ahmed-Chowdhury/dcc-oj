@@ -4,7 +4,7 @@
 }
 .features {
   margin-top: 700px;
-  background-image: linear-gradient(white, #b4b2f3);
+  background-image: linear-gradient(#fffbfb, #b4b2f3);
   z-index: -1;
   display: flex;
   flex-direction: column;

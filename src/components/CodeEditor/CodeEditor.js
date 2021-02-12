@@ -59,12 +59,11 @@ export const CodeEditor = (props) => {
           className="dropdown-lang"
           id="dropdown-basic-button"
           size="sm"
-          variant="secondary"
           title={selectedLanguage.name}
         >
           {languageList.map((language) => (
             <Dropdown.Item
-              className="dropdown-item"
+              className="dropdown-item "
               key={language.id}
               eventKey={language.name}
               value={language.name}
@@ -90,7 +89,7 @@ export const CodeEditor = (props) => {
         className="content"
         height="55vh"
         theme={theme ? "vs-dark" : "vs"}
-        language="c"
+        language="cpp"
         value={codeEditorText}
         editorDidMount={handleEditorDidMount}
       />

@@ -9,8 +9,7 @@ const About = () => {
           style={{
             fontSize: "2rem",
             textAlign: "center",
-            textShadow:
-              "1px 1px 1.5px #481a72, 0 0 0.8em white, 0 0 0.15em #481a72",
+            textShadow: "1px 1px 1.5px #481a72",
           }}
         >
           About DCC Online Judge

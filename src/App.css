@@ -3,6 +3,7 @@ body {
   font-family: "Andika New Basic", sans-serif;
   margin-top: 90px;
   color: #543f6f;
+  background-color: #fffbfb;
 }
 .loader {
   margin: 400px 0;
@@ -15,7 +16,11 @@ body {
   color: #543f6f;
 }
 
-.btn-style:hover {
+#dropdown-basic-button {
+  background-color: #543f6f;
+}
+.btn-style:hover,
+#dropdown-basic-button:hover {
   background-color: #b4b2f3;
   color: #2f1e44;
 }

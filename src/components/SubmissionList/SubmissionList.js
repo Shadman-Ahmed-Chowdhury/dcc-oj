@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
-import getSubmissions from "../app-logic/getSubmissions";
+import getSubmissions from "../../app-logic/getSubmissions";
 import "./SubmissionList.css";
 
 const SubmissionList = () => {
@@ -34,7 +34,7 @@ const SubmissionList = () => {
         <div className="container">
           <h2>All Submission</h2>
 
-          <table className="table">
+          <table className="table" style={{ fontSize: "16px" }}>
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -43,7 +43,7 @@ const SubmissionList = () => {
                 <th scope="col">Problem</th>
                 <th scope="col">Language</th>
                 <th scope="col">Verdict</th>
-                <th scope="col">Execution Time (s)</th>
+                <th scope="col">Time (s)</th>
                 <th scope="col">Memory (KB)</th>
               </tr>
             </thead>

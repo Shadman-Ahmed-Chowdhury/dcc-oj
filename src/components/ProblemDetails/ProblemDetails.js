@@ -5,9 +5,9 @@ import DOMPurify from "dompurify";
 
 import "./ProblemDetails.css";
 
-import getProblemDetails from "../app-logic/getProblemDetails";
-import authListener from "../app-logic/authListener";
-import getUserData from "../app-logic/getUserData";
+import getProblemDetails from "../../app-logic/getProblemDetails";
+import authListener from "../../app-logic/authListener";
+import getUserData from "../../app-logic/getUserData";
 
 class ProblemDetails extends React.Component {
   state = {

@@ -21,7 +21,13 @@
   justify-content: space-between;
 }
 .dropdown-item {
+  color: "#543f6f";
   font-size: 0.7em;
+}
+.dropdown-item:hover {
+  color: #6c67fd;
+  text-shadow: 0px 0px 1px #302e80;
+  background-color: #ffffff;
 }
 .dropdown-menu {
   height: 300px;
@@ -48,7 +54,7 @@ input[type="checkbox"] {
   text-indent: -9999px;
   width: 3rem;
   height: 1.5rem;
-  background: grey;
+  background: #b4b2f3;
   display: block;
   border-radius: 100px;
   position: relative;
@@ -63,11 +69,11 @@ input[type="checkbox"] {
   height: 1rem;
   background: #fff;
   border-radius: 10px;
-  transition: 0.3s;
+  transition: 0.2;
 }
 
 input:checked + .toggle-label {
-  background: #000000cc;
+  background: #543f6f;
 }
 
 input:checked + .toggle-label:after {
