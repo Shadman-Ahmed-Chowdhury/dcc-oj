@@ -24,6 +24,7 @@ class EditProblem extends React.Component {
     outputTestCase: "",
     totalAcceptedSubmissions: "",
     totalSubmissions: "",
+    tutorial: "",
     tags: [],
     ownProblem: false,
     username: "",
@@ -83,6 +84,7 @@ class EditProblem extends React.Component {
         problemSetter: doc.data().problemSetter,
         totalAcceptedSubmissions: doc.data().totalAcceptedSubmissions,
         totalSubmissions: doc.data().totalSubmissions,
+        tutorial: doc.data().tutorial,
         tags: doc.data().tags,
         uid: doc.data().uid,
         loading: false,
@@ -150,6 +152,13 @@ class EditProblem extends React.Component {
     });
     //console.log(data);
   };
+  handleTutorial = (event, editor) => {
+    const data = editor.getData();
+    this.setState({
+      tutorial: data,
+    });
+    //console.log(data);
+  };
   createMarkup = (html) => {
     return {
       __html: DOMPurify.sanitize(html),
@@ -169,6 +178,7 @@ class EditProblem extends React.Component {
     const sampleOutput = this.state.sampleOutput;
     const testCaseInput = this.state.inputTestCase;
     const testCaseOutput = this.state.outputTestCase;
+    const tutorial = this.state.tutorial;
     const tags = this.state.tags;
 
     //const tags = tagsString.split(",");
@@ -185,6 +195,7 @@ class EditProblem extends React.Component {
       sampleOutput,
       testCaseInput,
       testCaseOutput,
+      tutorial,
       tags
     );
   };
@@ -368,6 +379,21 @@ class EditProblem extends React.Component {
                   className="form-control"
                   data={this.state.outputTestCase}
                   required
+                />
+              </div>
+
+              {/* tutorial */}
+              <div className="form-group">
+                <label className="mb-1 mt-2">Tutorial: </label>
+                <CKEditor
+                  editor={ClassicEditor}
+                  onReady={(editor) => {
+                    // You can store the "editor" and use when it is needed.
+                    //console.log('Editor is ready to use!', editor);
+                  }}
+                  onChange={this.handleTutorial}
+                  className="form-control"
+                  data={this.state.tutorial}
                 />
               </div>
 

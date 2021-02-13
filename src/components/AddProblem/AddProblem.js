@@ -20,8 +20,9 @@ class AddProblem extends React.Component {
     sampleOutput: "",
     inputTestCase: "",
     outputTestCase: "",
-    tags: "",
     username: "",
+    tutorial: "",
+    tags: "",
   };
   componentDidMount() {
     authListener().onAuthStateChanged((user) => {
@@ -102,7 +103,13 @@ class AddProblem extends React.Component {
     });
     //console.log(data);
   };
-
+  handleTutorial = (event, editor) => {
+    const data = editor.getData();
+    this.setState({
+      tutorial: data,
+    });
+    //console.log(data);
+  };
   createMarkup = (html) => {
     return {
       __html: DOMPurify.sanitize(html),
@@ -123,6 +130,7 @@ class AddProblem extends React.Component {
     const testCaseInput = this.state.inputTestCase;
     const testCaseOutput = this.state.outputTestCase;
     const problemSetter = this.state.username;
+    const tutorial = this.state.tutorial;
     const tagsString = this.state.tags;
     const uid = this.state.uid;
 
@@ -145,6 +153,7 @@ class AddProblem extends React.Component {
       testCaseInput,
       testCaseOutput,
       problemSetter,
+      tutorial,
       tags,
       uid
     );
@@ -312,7 +321,19 @@ class AddProblem extends React.Component {
                 required
               />
             </div>
-
+            {/* tutorial */}
+            <div className="form-group">
+              <label className="mb-1 mt-2">Tutorial:</label>
+              <CKEditor
+                editor={ClassicEditor}
+                onReady={(editor) => {
+                  // You can store the "editor" and use when it is needed.
+                  //console.log('Editor is ready to use!', editor);
+                }}
+                onChange={this.handleTutorial}
+                className="form-control"
+              />
+            </div>
             {/*  tags  */}
             <div className="form-group">
               <label htmlFor="tags" className="mb-1 mt-2">

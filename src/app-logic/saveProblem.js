@@ -17,6 +17,7 @@ const saveProblem = (
   testCaseInput,
   testCaseOutput,
   problemSetter,
+  tutorial,
   tags,
   uid
 ) => {
@@ -38,6 +39,7 @@ const saveProblem = (
       testCaseInput,
       testCaseOutput,
       problemSetter,
+      tutorial,
       tags,
       totalSubmissions: 0,
       totalAcceptedSubmissions: 0,

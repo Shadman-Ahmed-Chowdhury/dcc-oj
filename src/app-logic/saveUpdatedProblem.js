@@ -16,6 +16,7 @@ const saveUpdatedProblem = (
   sampleOutput,
   testCaseInput,
   testCaseOutput,
+  tutorial,
   tags
 ) => {
   const MySwal = withReactContent(Swal);
@@ -35,6 +36,7 @@ const saveUpdatedProblem = (
       sampleOutput,
       testCaseInput,
       testCaseOutput,
+      tutorial,
       tags,
     })
     .then(() => {
