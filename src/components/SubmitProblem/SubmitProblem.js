@@ -172,9 +172,13 @@ class SubmitProblem extends React.Component {
               {this.state.status === "" ? (
                 "Your submission verdict will appear here"
               ) : this.state.status === "Accepted" ? (
-                <Alert variant="success">{this.state.status}</Alert>
-              ) : (
+                <Alert variant="success">
+                  Your code is {this.state.status}
+                </Alert>
+              ) : this.state.status === "Wrong Answer" ? (
                 <Alert variant="danger">{this.state.status}</Alert>
+              ) : (
+                <Alert variant="warning">{this.state.status}</Alert>
               )}
             </Card.Body>
           </Card>

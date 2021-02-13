@@ -8,8 +8,11 @@ h2 {
 }
 
 .accepted {
-  color: #5cb85c;
+  color: #2c9e2c;
 }
-.not-accepted {
-  color: #d9534f;
+.wa {
+  color: #f8225b;
+}
+.error {
+  color: #fc7a00;
 }

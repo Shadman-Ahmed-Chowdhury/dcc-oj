@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
 import getSubmissions from "../../app-logic/getSubmissions";
 import "./SubmissionList.css";
+import CodeViewer from "../CodeViewer/CodeViewer";
 
 const SubmissionList = () => {
   const [submissions, setSubmissions] = useState([]);
   const [loading, setLoading] = useState(true);
-  //const [codeViewer, toggleCodeViewer] = useState(false);
-
+  const [codeViewer, toggleCodeViewer] = useState(false);
+  const [codeViewerData, setCodeViewerData] = useState({});
   //Use Effect
   useEffect(() => {
     const fetchSubmissions = async () => {
@@ -19,7 +20,10 @@ const SubmissionList = () => {
     };
     fetchSubmissions();
   }, []);
-
+  function setCodeViewer(codeViewerData) {
+    toggleCodeViewer(true);
+    setCodeViewerData(codeViewerData);
+  }
   if (loading) {
     return (
       <div className="ProblemList">
@@ -50,7 +54,22 @@ const SubmissionList = () => {
             <tbody>
               {submissions.map((doc) => (
                 <tr key={doc.id} className="col-md-4 mt-5">
-                  <td>{doc.data().submissionId}</td>
+                  <td>
+                    <button
+                      className="btn-style btn btn-sm"
+                      onClick={() => setCodeViewer(doc.data())}
+                    >
+                      {doc.data().submissionId}
+                    </button>
+                    <CodeViewer
+                      show={codeViewer}
+                      onHide={() => toggleCodeViewer(false)}
+                      sourceCode={codeViewerData.sourceCode}
+                      username={codeViewerData.username}
+                      problemTitle={codeViewerData.problemTitle}
+                      verdict={codeViewerData.verdict}
+                    />
+                  </td>
                   <td>{doc.data().when}</td>
                   <td>{doc.data().username}</td>
                   <td>
@@ -66,7 +85,9 @@ const SubmissionList = () => {
                     className={
                       doc.data().verdict === "Accepted"
                         ? "accepted"
-                        : "not-accepted"
+                        : doc.data().verdict === "Wrong Answer"
+                        ? "wa"
+                        : "error"
                     }
                   >
                     {doc.data().verdict}
@@ -82,34 +103,5 @@ const SubmissionList = () => {
     );
   }
 };
-
-// FIXME: Code viewer modal needs to be separted in isolete component.
-// const CodeViewer = () => {{doc.data().submissionId}
-// <Modal show={codeViewer}>
-//   <Modal.Dialog>
-//     <Modal.Header closeButton>
-//       <Modal.Title>Modal title</Modal.Title>
-//     </Modal.Header>
-
-//     <Modal.Body>
-//       <p>Modal body text goes here.</p>
-//     </Modal.Body>
-//   </Modal.Dialog>
-//   ;
-//</Modal>};
-
-// FIXME: Used hooks, so didn't used auth. Maybe it's not important here though.
-// class SubmissionList extends React.Component {
-//   componentDidMount() {
-//     authListener();
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <h3>All Submissions</h3>
-//       </div>
-//     );
-//   }
-// }
 
 export default SubmissionList;

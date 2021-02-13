@@ -1,11 +1,11 @@
 import React from "react";
-
 import "./Profile.css";
 
 import authListener from "../../app-logic/authListener";
 import getUserData from "../../app-logic/getUserData";
 import getSubmissions from "../../app-logic/getSubmissions";
 import { Link } from "react-router-dom";
+import CodeViewer from "../CodeViewer/CodeViewer";
 
 class Profile extends React.Component {
   state = {
@@ -15,6 +15,8 @@ class Profile extends React.Component {
     numberOfSolve: 0,
     numberOfSubmissions: 0,
     submissions: [],
+    openCodeViewer: false,
+    codeViewerCode: "",
   };
 
   async componentDidMount() {
@@ -58,6 +60,7 @@ class Profile extends React.Component {
       if (doc.data().uid === this.state.uid) {
         const {
           submissionId,
+          sourceCode,
           when,
           problemId,
           problemTitle,
@@ -69,6 +72,7 @@ class Profile extends React.Component {
         if (verdict === "Accepted") numberOfSolve++;
         submissions.push({
           submissionId,
+          sourceCode,
           when,
           problemId,
           problemTitle,
@@ -82,7 +86,17 @@ class Profile extends React.Component {
     });
     return { submissions, numberOfSolve, numberOfSubmissions };
   }
+  toggleCodeViewer() {
+    this.setState({ openCodeViewer: !this.state.openCodeViewer });
+  }
+  setCodeViewerCode(sourceCode) {
+    this.setState({
+      codeViewerCode: sourceCode,
+    });
+    this.toggleCodeViewer();
+  }
   render() {
+    console.log(this.openCodeViewer);
     return (
       <div className="container" center>
         <div className="row gutters-sm mt-3">
@@ -149,7 +163,24 @@ class Profile extends React.Component {
                   <tbody>
                     {this.state.submissions.map((data) => (
                       <tr key={data.submissionId} className="col-md-4 mt-3">
-                        <td>{data.submissionId}</td>
+                        <td>
+                          <button
+                            className="btn-style btn btn-sm"
+                            onClick={() =>
+                              this.setCodeViewerCode(data.sourceCode)
+                            }
+                          >
+                            {data.submissionId}
+                          </button>
+                          <CodeViewer
+                            show={this.openCodeViewer}
+                            onHide={() => this.toggleCodeViewer(false)}
+                            sourceCode={this.CodeViewerCode}
+                            username={data.username}
+                            problemTitle={data.problemTitle}
+                            verdict={data.verdict}
+                          />
+                        </td>
                         <td>{data.when}</td>
                         <td>
                           <Link
@@ -165,7 +196,9 @@ class Profile extends React.Component {
                           className={
                             data.verdict === "Accepted"
                               ? "accepted"
-                              : "not-accepted"
+                              : data.verdict === "Wrong Answer"
+                              ? "wa"
+                              : "error"
                           }
                         >
                           {data.verdict}
