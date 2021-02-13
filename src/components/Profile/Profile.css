@@ -1,0 +1,9 @@
+.profile-card-body,
+.profile-custom-card {
+  background-color: rgba(223, 222, 255, 0.582);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.26);
+}
+
+.info {
+  padding: 10px;
+}

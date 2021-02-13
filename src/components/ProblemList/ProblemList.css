@@ -8,13 +8,14 @@ h2 {
 }
 
 .btn-sm {
-  transition: 0.5s all ease-in-out;
+  transition: 0.3s all ease-in-out;
 }
 
 .title {
-  color: black;
+  color: #5a49edf5;
+  font-size: 16px;
 }
 
 .title:hover {
-  color: #37c;
+  color: #2f1e44;
 }

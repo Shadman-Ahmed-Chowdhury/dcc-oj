@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./Register.css";
 
-import registerUser from "../app-logic/registerUser";
+import registerUser from "../../app-logic/registerUser";
 
 class Register extends React.Component {
   register = (e) => {

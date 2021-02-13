@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   heroText: {
     textAlign: "center",
-    textShadow: "1px 1px 2px #481a72, 0 0 1em white, 0 0 0.2em #481a72",
+    textShadow: "1px 1px 2px #481a72",
   },
 
   about: {
@@ -48,8 +48,7 @@ const Home = () => {
           style={{
             fontSize: "1.8rem",
             textAlign: "center",
-            textShadow:
-              "1px 1px 1.5px #481a72, 0 0 0.8em white, 0 0 0.15em #481a72",
+            textShadow: "1px 1px 1.5px #481a72",
           }}
         >
           Practice Programming Problems, Develop Your Skills
@@ -68,8 +67,7 @@ const Home = () => {
           style={{
             fontSize: "3rem",
             textAlign: "center",
-            textShadow:
-              "1px 1px 1.5px #481a72, 0 0 0.8em white, 0 0 0.15em #481a72",
+            textShadow: "1px 1px 1.5px #481a72",
           }}
         >
           Key Features

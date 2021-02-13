@@ -5,10 +5,10 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import DOMPurify from "dompurify";
 
 import "./EditProblem.css";
-import authListener from "../app-logic/authListener";
-import getUserData from "../app-logic/getUserData";
-import getProblemDetails from "../app-logic/getProblemDetails";
-import saveUpdatedProblem from "../app-logic/saveUpdatedProblem";
+import authListener from "../../app-logic/authListener";
+import getUserData from "../../app-logic/getUserData";
+import getProblemDetails from "../../app-logic/getProblemDetails";
+import saveUpdatedProblem from "../../app-logic/saveUpdatedProblem";
 
 class EditProblem extends React.Component {
   state = {

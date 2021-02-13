@@ -5,19 +5,19 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
 //Importing Components
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import ProblemList from "./components/ProblemList";
-import AddProblem from "./components/AddProblem";
-import EditProblem from "./components/EditProblem";
-import ProblemDetails from "./components/ProblemDetails";
-import SubmitProblem from "./components/SubmitProblem";
-import SubmissionList from "./components/SubmissionList";
-import Profile from "./components/Profile";
-import About from "./components/About";
-import Docs from "./components/Docs";
-import Navbar from "./components/Navbar";
+import Home from "./components/Home/Home";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import ProblemList from "./components/ProblemList/ProblemList";
+import AddProblem from "./components/AddProblem/AddProblem";
+import EditProblem from "./components/EditProblem/EditProblem";
+import ProblemDetails from "./components/ProblemDetails/ProblemDetails";
+import SubmitProblem from "./components/SubmitProblem/SubmitProblem";
+import SubmissionList from "./components/SubmissionList/SubmissionList";
+import Profile from "./components/Profile/Profile";
+import About from "./components/About/About";
+import Docs from "./components/Docs/Docs";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (

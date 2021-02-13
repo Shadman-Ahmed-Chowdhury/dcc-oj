@@ -4,9 +4,9 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import DOMPurify from "dompurify";
 
 import "./AddProblem.css";
-import saveProblem from "../app-logic/saveProblem";
-import authListener from "../app-logic/authListener";
-import getUserData from "../app-logic/getUserData";
+import saveProblem from "../../app-logic/saveProblem";
+import authListener from "../../app-logic/authListener";
+import getUserData from "../../app-logic/getUserData";
 
 class AddProblem extends React.Component {
   state = {

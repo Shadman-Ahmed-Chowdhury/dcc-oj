@@ -1,0 +1,41 @@
+.login {
+  background-color: #543f6f8a;
+  width: 40%;
+  height: 60vh;
+  margin: 100px auto;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.26);
+  color: white;
+}
+
+.text {
+  text-shadow: 0 5px 8px rgba(0, 0, 0, 0.26);
+}
+
+.form-control {
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.26);
+}
+
+.loginForm {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.loginBtn {
+  color: #543f6f;
+  transition: 0.3s all ease-in-out;
+  background-color: #d0cfff;
+}
+
+.loginBtn:hover {
+  background-color: #543f6f;
+  color: #ddd;
+}
+
+.registerLink {
+  color: #403caa;
+}
+
+.registerLink:hover {
+  color: #543f6f;
+  text-shadow: 0px 0px 1px black;
+}

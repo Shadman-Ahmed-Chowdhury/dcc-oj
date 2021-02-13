@@ -12,6 +12,14 @@
   background-color: #ededed;
 }
 .badge-dark {
-  background-color: #333;
+  background-color: #543f6f;
   color: #fff;
+}
+a.title {
+  color: #4d49b3;
+  padding: 0 10px;
+}
+a.title:hover {
+  color: #4d49b3;
+  text-shadow: 0px 0px 1px #302e80;
 }

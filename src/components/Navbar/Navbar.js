@@ -5,9 +5,9 @@ import "./Navbar.css";
 
 import MdArrowDropdownCircle from "react-ionicons/lib/MdArrowDropdownCircle";
 
-import logoutUser from "../app-logic/logoutUser";
-import authListener from "../app-logic/authListener";
-import getUserData from "../app-logic/getUserData";
+import logoutUser from "../../app-logic/logoutUser";
+import authListener from "../../app-logic/authListener";
+import getUserData from "../../app-logic/getUserData";
 
 const Navbar = () => {
   const [user, setUser] = useState({});
@@ -67,7 +67,7 @@ const Navbar = () => {
       >
         <div className="container">
           <Link to="/" className="navbar-brand">
-            Online Judge
+            DCC Online Judge
           </Link>
           <button
             className="navbar-toggler"
@@ -106,7 +106,11 @@ const Navbar = () => {
             {user ? (
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a href="#!" className="nav-link user-email">
+                  <a
+                    href="#!"
+                    className="nav-link user-email"
+                    style={{ fontSize: "18px" }}
+                  >
                     {username}
                     <MdArrowDropdownCircle fontSize="20px" color="white" />
                   </a>
@@ -119,6 +123,7 @@ const Navbar = () => {
                         <Link
                           to={`/profile/${username}`}
                           className="profile-link"
+                          style={{ fontSize: "16px" }}
                         >
                           Profile
                         </Link>
