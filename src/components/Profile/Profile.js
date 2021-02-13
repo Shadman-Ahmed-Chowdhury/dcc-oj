@@ -1,6 +1,6 @@
 import React from "react";
 import "./Profile.css";
-
+import { BounceLoader } from "react-spinners";
 import authListener from "../../app-logic/authListener";
 import getUserData from "../../app-logic/getUserData";
 import getSubmissions from "../../app-logic/getSubmissions";
@@ -96,7 +96,15 @@ class Profile extends React.Component {
     this.toggleCodeViewer();
   }
   render() {
-    console.log(this.openCodeViewer);
+    if (this.state.submissions.length === 0) {
+      return (
+        <div className="ProblemDetails">
+          <div className="loader">
+            <BounceLoader size={100} color="#543F6F" />
+          </div>
+        </div>
+      );
+    }
     return (
       <div className="container" center>
         <div className="row gutters-sm mt-3">
