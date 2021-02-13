@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
 import DOMPurify from "dompurify";
+import Modal from "react-bootstrap/Modal";
 
 import "./ProblemDetails.css";
 
@@ -26,6 +27,7 @@ class ProblemDetails extends React.Component {
     loading: true,
     ownProblem: false,
     id: "",
+    show: false,
   };
   componentDidMount() {
     this.loadProblemDetails();
@@ -50,6 +52,12 @@ class ProblemDetails extends React.Component {
       }
     });
   }
+  setShow = (bool) => {
+    this.setState({
+      show: bool,
+    });
+    console.log(this.state.show);
+  };
 
   loadProblemDetails() {
     const id = this.props.match.params.id;
@@ -69,6 +77,7 @@ class ProblemDetails extends React.Component {
         problemSetter: doc.data().problemSetter,
         totalAcceptedSubmissions: doc.data().totalAcceptedSubmissions,
         totalSubmissions: doc.data().totalSubmissions,
+        tutorial: doc.data().tutorial,
         tags: doc.data().tags,
         uid: doc.data().uid,
         loading: false,
@@ -167,6 +176,31 @@ class ProblemDetails extends React.Component {
                   </li>
                   <li className="list-group-item ">Time Limit: 2s</li>
                   <li className="list-group-item ">Memory Limit: 256MB</li>
+                  <li className="list-group-item">
+                    <button
+                      className="btn btn-style"
+                      onClick={() => this.setShow(true)}
+                    >
+                      Read Tutorials
+                    </button>
+                  </li>
+
+                  <Modal
+                    show={this.state.show}
+                    onHide={() => this.setShow(false)}
+                    dialogClassName="modal-180w"
+                    aria-labelledby="example-custom-modal-styling-title"
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title id="example-custom-modal-styling-title">
+                        Tutorials/Hints for problem {this.state.title}.
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <p>{this.state.tutorial}</p>
+                    </Modal.Body>
+                  </Modal>
+
                   <li className="list-group-item">
                     Tags:
                     {this.state.tags.map((tag) => {
