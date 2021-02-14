@@ -7,12 +7,13 @@ function CodeViewer(props) {
     <Modal
       {...props}
       size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
+      dialogClassName="modal-180w"
+      aria-labelledby="example-custom-modal-styling-title"
       centered
     >
       <Modal.Header>
         <Modal.Title
-          id="contained-modal-title-vcenter"
+          id="example-custom-modal-styling-title"
           style={{ fontSize: "14px" }}
         >
           Problem: {props.problemTitle}, Submitted by: {props.username}

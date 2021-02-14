@@ -190,8 +190,9 @@ class ProblemDetails extends React.Component {
                     onHide={() => this.setShow(false)}
                     dialogClassName="modal-180w"
                     aria-labelledby="example-custom-modal-styling-title"
+                    centered
                   >
-                    <Modal.Header closeButton>
+                    <Modal.Header>
                       <Modal.Title id="example-custom-modal-styling-title">
                         Tutorials/Hints for problem {this.state.title}.
                       </Modal.Title>
@@ -199,6 +200,14 @@ class ProblemDetails extends React.Component {
                     <Modal.Body>
                       <p>{this.state.tutorial}</p>
                     </Modal.Body>
+                    <Modal.Footer>
+                      <button
+                        className={"btn-style btn-sm btn"}
+                        onClick={() => this.setShow(false)}
+                      >
+                        Close
+                      </button>
+                    </Modal.Footer>
                   </Modal>
 
                   <li className="list-group-item">
