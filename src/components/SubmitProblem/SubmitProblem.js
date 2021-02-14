@@ -8,6 +8,7 @@ import saveSubmission from "../../app-logic/saveSubmission";
 import authListener from "../../app-logic/authListener";
 import getProblemDetails from "../../app-logic/getProblemDetails";
 import getUserData from "../../app-logic/getUserData";
+import { BeatLoader } from "react-spinners";
 
 class SubmitProblem extends React.Component {
   state = {
@@ -25,6 +26,7 @@ class SubmitProblem extends React.Component {
     username: "",
     uid: "",
     problemId: "",
+    spinner: false,
   };
   componentDidMount() {
     authListener().onAuthStateChanged((user) => {
@@ -68,8 +70,8 @@ class SubmitProblem extends React.Component {
       params: { base64_encoded: "false", fields: "*" },
       headers: {
         "content-type": "application/json",
-        "x-rapidapi-key": process.env.REACT_APP_JUDGE_API_KEY,
-        "x-rapidapi-host": process.env.REACT_APP_JUDGE_API_HOST,
+        "x-rapidapi-key": "a34787cbdfmshe12f0b9da3a38cdp18d94ejsn8a6e69066f14",
+        "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
       },
       data: JSON.stringify({
         language_id: this.state.language_id,
@@ -100,8 +102,8 @@ class SubmitProblem extends React.Component {
       url: `https://judge0-ce.p.rapidapi.com/submissions/${token}`,
       params: { base64_encoded: "false", fields: "*" },
       headers: {
-        "x-rapidapi-key": process.env.REACT_APP_JUDGE_API_KEY,
-        "x-rapidapi-host": process.env.REACT_APP_JUDGE_API_HOST,
+        "x-rapidapi-key": "a34787cbdfmshe12f0b9da3a38cdp18d94ejsn8a6e69066f14",
+        "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
       },
     };
 
@@ -114,6 +116,7 @@ class SubmitProblem extends React.Component {
           this.setState(
             {
               status: response.data.status.description,
+              spinner: false,
             },
             () => {
               const date = new Date();
@@ -148,6 +151,7 @@ class SubmitProblem extends React.Component {
         source_code: source_code,
         language_id: language.id,
         language: language.name,
+        spinner: true,
       },
       () => {
         this.submitToJudge();
@@ -165,11 +169,13 @@ class SubmitProblem extends React.Component {
             submitButton={this.handleSubmissionData}
           />
         </div>
-        <div>
+        <div className="mb-5">
           <Card border="light" className="verdict">
             <Card.Header>Submission Verdict</Card.Header>
             <Card.Body>
-              {this.state.status === "" ? (
+              {this.state.spinner ? (
+                <BeatLoader size={20} margin={2} color="#543F6F" />
+              ) : this.state.status === "" ? (
                 "Your submission verdict will appear here"
               ) : this.state.status === "Accepted" ? (
                 <Alert variant="success">
