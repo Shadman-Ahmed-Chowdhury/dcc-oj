@@ -174,14 +174,12 @@ class EditProblem extends React.Component {
     const input = this.state.input;
     const constraints = this.state.constraints;
     const output = this.state.output;
-    const sampleInput = this.state.sampleInput;
-    const sampleOutput = this.state.sampleOutput;
-    const testCaseInput = this.state.inputTestCase;
-    const testCaseOutput = this.state.outputTestCase;
+    const sampleInput = this.state.sampleInput.replace(/<[^>]+>/g, "");
+    const sampleOutput = this.state.sampleOutput.replace(/<[^>]+>/g, "");
+    const testCaseInput = this.state.inputTestCase.replace(/<[^>]+>/g, "");
+    const testCaseOutput = this.state.outputTestCase.replace(/<[^>]+>/g, "");
     const tutorial = this.state.tutorial;
     const tags = this.state.tags;
-
-    //const tags = tagsString.split(",");
 
     saveUpdatedProblem(
       id,
