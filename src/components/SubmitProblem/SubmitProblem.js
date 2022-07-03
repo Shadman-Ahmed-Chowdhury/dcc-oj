@@ -135,6 +135,7 @@ class SubmitProblem extends React.Component {
                 time: response.data.time,
                 memory: response.data.memory,
               };
+              console.log(response.data);
               saveSubmission(submissionData);
               console.log(submissionData);
             }
